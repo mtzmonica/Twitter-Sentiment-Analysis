@@ -1,3 +1,8 @@
+# @author Monica Martinez | mtzmonica.com
+#
+# Uses tweepy and python to faciliated twitter user tweet/status processing:
+#   collects and prints most tweeted words, hastags, and users.
+#
 from twitteraccess import *
 import tweepy
 import csv
@@ -84,5 +89,5 @@ def top_mentioned(n):
     for word,num in Counter(hastags).most_common(n):
          print("%s : %d" %(word, num))    
 
-top_mentioned(10)
+#top_mentioned(10)
 
