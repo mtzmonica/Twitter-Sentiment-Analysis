@@ -26,7 +26,6 @@ for (words, sentiment) in pos_tweets + neg_tweets:
 #---------------Feature Vector and Feature Extraction-----------------
 def get_words(tweets):
     all_words = []
-
     for (words, sentiment) in tweets:
       all_words.extend(words)
     return all_words

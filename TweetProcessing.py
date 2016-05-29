@@ -23,17 +23,18 @@ api = tweepy.API(auth)
 #---------Collecting Data------------------------------------------
 
 #set count to a resonable number as to not exceed twitter rate limits [300tweets/15min]
-username = 'martinezmonica_'
-#count = 100, pages = 100 ==> 3192
-count = 150
-TWEETS = []
+def get_personal_tweets(username='martinezmonica_', count=150):
+    
+    #count = 100, pages = 100 ==> 3192
+    TWEETS = []
 
-#stores my tweets; limited number not complete tweet count; By ITEM vs by PAGE
-#TWEETS = tweepy.Cursor(api.user_timeline, screen_name = username, include_rts = False).items(count)
+    #stores my tweets; limited number not complete tweet count; By ITEM vs by PAGE
+    #TWEETS = tweepy.Cursor(api.user_timeline, screen_name = username, include_rts = False).items(count)
 
-pages = tweepy.Cursor(api.user_timeline, screen_name = username).pages(count)
-for i in pages:
-    TWEETS = TWEETS + i
+    pages = tweepy.Cursor(api.user_timeline, screen_name = username).pages(count)
+    for i in pages:
+        TWEETS = TWEETS + i
+    return TWEETS;    
         
 
 def to_csv(myTweets):
@@ -91,3 +92,7 @@ def top_mentioned(n):
 
 #top_mentioned(10)
 
+
+#FIX: GET TWEETS FUNCTION AND THE WAY IT INTERACTS WITH PREPROCESSING AND OTHER 
+#FUNCTIONS
+#INCLUDE A STREAMING FUNCTION TO GET TWEETS BASED ON HASTAGS
